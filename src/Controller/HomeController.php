@@ -7,7 +7,6 @@ namespace App\Controller;
 use App\Entity\Contact;
 use App\Entity\Shop;
 use App\Service\HomeDataDoctrineService;
-use App\Service\HomeDataService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Attribute\Route;
@@ -21,7 +20,6 @@ class HomeController extends AbstractController
     #[Route('/api/home', name: 'home', methods: ['GET'])]
     public function homePage(): JsonResponse
     {
-
         $contacts = $this->homeDataDoctrineService->getAllContacts();
         $shops = $this->homeDataDoctrineService->getAllShops();
 

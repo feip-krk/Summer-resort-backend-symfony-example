@@ -11,8 +11,8 @@ use Doctrine\ORM\Mapping as ORM;
 class Shop
 {
     #[ORM\Id]
-    #[ORM\GeneratedValue(strategy: "AUTO")]
-    #[ORM\Column(type: "integer")]
+    #[ORM\GeneratedValue(strategy: 'AUTO')]
+    #[ORM\Column(type: 'integer')]
     private int $id;
 
     #[ORM\Column(type: 'string', length: 255)]

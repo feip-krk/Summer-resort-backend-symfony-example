@@ -6,6 +6,7 @@ namespace App\Entity;
 
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+
 #[ORM\Entity]
 #[ORM\Table(name: 'contacts')]
 class Contact
@@ -18,7 +19,7 @@ class Contact
     private string $title;
     #[ORM\Column(type: 'string', length: 255)]
     private string $url;
-    #[ORM\OneToMany(targetEntity: Address::class, mappedBy: "contact", fetch: 'LAZY')]
+    #[ORM\OneToMany(targetEntity: Address::class, mappedBy: 'contact', fetch: 'LAZY')]
     private Collection $addresses;
 
     public function __construct(

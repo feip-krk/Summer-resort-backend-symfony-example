@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Service;
 
 use App\Entity\Contact;
@@ -10,9 +12,7 @@ class HomeDataDoctrineService
 {
     public function __construct(
         private EntityManagerInterface $em,
-    )
-    {
-    }
+    ) {}
 
     public function createStubContact(): Contact
     {

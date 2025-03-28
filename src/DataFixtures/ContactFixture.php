@@ -13,7 +13,8 @@ use Doctrine\Persistence\ObjectManager;
  */
 class ContactFixture extends Fixture
 {
-    public function load(ObjectManager $manager): void {
+    public function load(ObjectManager $manager): void
+    {
         // Пример создания нескольких объектов Contact
         $contact1 = new Contact('Contact Title 1', 'https://www.example1.com');
         $contact2 = new Contact('Contact Title 2', 'https://www.example2.com');
@@ -29,4 +30,4 @@ class ContactFixture extends Fixture
     }
 }
 
-//php bin/console doctrine:fixtures:load
+// php bin/console doctrine:fixtures:load

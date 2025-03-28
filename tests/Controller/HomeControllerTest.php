@@ -29,8 +29,8 @@ class HomeControllerTest extends WebTestCase
         $dataMockService->method('getBannerUrl')->willReturn($banner);
 
         $client->getContainer()->set(HomeDataService::class, $dataMockService);
-//        $kernelProjectDir = $client->getContainer()->getParameter('kernel.project_dir');
-//        $client->getContainer()->set(HomeDataService::class, new HomeDataService('https://api.example.com', Path::join($kernelProjectDir, 'test', 'resource')));
+        //        $kernelProjectDir = $client->getContainer()->getParameter('kernel.project_dir');
+        //        $client->getContainer()->set(HomeDataService::class, new HomeDataService('https://api.example.com', Path::join($kernelProjectDir, 'test', 'resource')));
 
         $client->request('GET', '/api/csv/home');
 
