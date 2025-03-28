@@ -1,0 +1,3 @@
+#!/bin/sh
+set -x
+vendor/bin/php-cs-fixer "$@"

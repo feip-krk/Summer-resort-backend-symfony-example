@@ -1,0 +1,8 @@
+#!/bin/bash
+set -e
+
+HOST_NUMBER_OF_LOGICAL_CORES=$1
+shift
+
+set -x
+php vendor/bin/psalm "$@"

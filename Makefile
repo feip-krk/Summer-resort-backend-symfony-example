@@ -93,3 +93,32 @@ xdebug-disable: ## Disable Xdebug
 .PHONY: load-fixture
 load-fixture:
 	$(DEP) php bin/console doctrine:fixtures:load --no-interaction
+
+
+.PHONY: php-cs-fixer
+php-cs-fixer: ## Run PHP Coding Standards Fixer in analyze mode
+	$(DEP) ./docker/php/php-cs-fixer fix --verbose --allow-risky=yes --dry-run
+
+.PHONY: php-cs-fixer-fix
+php-cs-fixer-fix: ## Run PHP Coding Standards Fixer in fix mode
+	$(DEP) ./docker/php/php-cs-fixer fix --verbose --allow-risky=yes
+
+.PHONY: php-codesniffer
+php-codesniffer: ## Run PHP CodeSniffer in analyze mode
+	$(DEP) ./docker/php/phpcs --standard='php-codesniffer.xml'
+
+.PHONY: php-codesniffer-fix
+php-codesniffer-fix: ## Run PHP CodeSniffer in fix mode
+	$(DEP) ./docker/php/phpcbf --standard='php-codesniffer.xml'
+
+PSALM = $(DEP) ./docker/php/psalm
+
+.PHONY: psalm
+psalm: ## Run Psalm in analyze mode
+	$(PSALM) --diff
+
+.PHONY: lint
+lint: php-cs-fixer-fix php-codesniffer psalm ## Run all coding standard checkers, static analyzers etc
+
+.PHONY: fix
+fix: php-cs-fixer-fix php-codesniffer-fix ## Attempt to fix coding standard violations, static analyzer errors etc
