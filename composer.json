@@ -16,6 +16,7 @@
         "doctrine/orm": "^3.3",
         "doctrine/persistence": "^3.4",
         "nelmio/api-doc-bundle": "^5.0",
+        "sonata-project/admin-bundle": "*",
         "symfony/asset": "7.2.*",
         "symfony/console": "7.2.*",
         "symfony/dotenv": "7.2.*",

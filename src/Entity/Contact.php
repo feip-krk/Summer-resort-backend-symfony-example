@@ -7,13 +7,11 @@ namespace App\Entity;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use JsonSerializable;
-use Nelmio\ApiDocBundle\Attribute\Model;
 use OpenApi\Attributes as OA;
-use OpenApi\Attributes\Schema;
 
 #[ORM\Entity]
 #[ORM\Table(name: 'contacts')]
-class Contact  implements JsonSerializable
+class Contact implements JsonSerializable
 {
     #[ORM\Id]
     #[ORM\GeneratedValue(strategy: 'AUTO')]

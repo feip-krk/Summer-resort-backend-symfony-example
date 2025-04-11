@@ -7,7 +7,6 @@ namespace App\Controller;
 use App\Dto\ContactDto;
 use App\Dto\ShopDto;
 use App\Service\HomeDataCsvService;
-use OpenApi\Attributes as OA;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Attribute\Route;

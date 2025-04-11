@@ -21,8 +21,8 @@ class HomeDataCsvService
         return $this->baseUrl . $path;
     }
 
-    /** @return ContactDto[] */
-    public function getContactDtos(): array
+    /** @return ContactDto[]|null */
+    public function getContactDtos(): ?array
     {
         $contactsFile = $this->resourceDir . '/contacts.csv';
         $contactData = $this->parseCsvFile($contactsFile);

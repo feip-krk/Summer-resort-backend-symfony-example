@@ -14,6 +14,7 @@ use Symfony\Bundle\MonologBundle\MonologBundle;
 use Symfony\Bundle\SecurityBundle\SecurityBundle;
 use Symfony\Bundle\TwigBundle\TwigBundle;
 use Symfony\Bundle\WebProfilerBundle\WebProfilerBundle;
+use Symfony\UX\StimulusBundle\StimulusBundle;
 use Twig\Extra\TwigExtraBundle\TwigExtraBundle;
 
 return [
@@ -30,4 +31,5 @@ return [
     DoctrineFixturesBundle::class => ['dev' => true, 'test' => true],
     NelmioApiDocBundle::class => ['all' => true],
     TwigExtraBundle::class => ['dev' => true, 'test' => true],
+    StimulusBundle::class => ['all' => true],
 ];
