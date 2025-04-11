@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Controller;
 
-use App\Service\HomeDataService;
+use App\Service\HomeDataCsvService;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class HomeControllerTest extends WebTestCase
@@ -25,12 +25,10 @@ class HomeControllerTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $dataMockService = $this->createMock(HomeDataService::class);
+        $dataMockService = $this->createMock(HomeDataCsvService::class);
         $dataMockService->method('getBannerUrl')->willReturn($banner);
 
-        $client->getContainer()->set(HomeDataService::class, $dataMockService);
-        //        $kernelProjectDir = $client->getContainer()->getParameter('kernel.project_dir');
-        //        $client->getContainer()->set(HomeDataService::class, new HomeDataService('https://api.example.com', Path::join($kernelProjectDir, 'test', 'resource')));
+        $client->getContainer()->set(HomeDataCsvService::class, $dataMockService);
 
         $client->request('GET', '/api/csv/home');
 

@@ -122,3 +122,20 @@ lint: php-cs-fixer-fix php-codesniffer psalm ## Run all coding standard checkers
 
 .PHONY: fix
 fix: php-cs-fixer-fix php-codesniffer-fix ## Attempt to fix coding standard violations, static analyzer errors etc
+
+.PHONY: md
+migrate-diff:
+	$(DEP) php bin/console doctrine:migrations:diff ## Generate migration
+
+.PHONY: m
+migrate:
+	$(DEP) php bin/console doctrine:migrations:migrate ## Apply migrations
+
+.PHONY: recreate-empty-db
+recreate-empty-db: ## Recreate database and load fixtures
+	$(DEP) bin/console doctrine:database:drop --force
+	$(DEP) bin/console doctrine:database:create
+
+.PHONY: openapi
+openapi: recreate-empty-db ## Generate OpenAPI documentation
+	$(DEP) php bin/console  nelmio:apidoc:dump --format=yaml > openapi.yaml

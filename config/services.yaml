@@ -31,7 +31,7 @@ services:
             - { name: doctrine.event_subscriber, connection: default }
 
 
-    App\Service\HomeDataService:
+    App\Service\HomeDataCsvService:
         arguments:
             $baseUrl: '%app.base_url%'
             $resourceDir: '%kernel.project_dir%/resource/storage'
