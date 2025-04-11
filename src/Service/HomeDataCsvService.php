@@ -8,7 +8,7 @@ use App\Dto\ContactDto;
 use App\Dto\ShopDto;
 use Symfony\Component\Filesystem\Path;
 
-class HomeDataService
+class HomeDataCsvService
 {
     public function __construct(
         private string $baseUrl,

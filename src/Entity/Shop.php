@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use OpenApi\Attributes as OA;
 
 #[ORM\Entity]
 #[ORM\Table(name: 'shops')]
@@ -16,24 +17,31 @@ class Shop
     private int $id;
 
     #[ORM\Column(type: 'string', length: 255)]
+    #[OA\Property(property: 'title', type: 'string')]
     private string $title;
     #[ORM\Column(type: 'string', length: 255)]
+    #[OA\Property(property: 'address', type: 'int')]
     private string $address;
-    #[ORM\Column(type: 'float', length: 255)]
+    #[ORM\Column(type: 'float')]
     private float $latitude;
-    #[ORM\Column(type: 'float', length: 255)]
+    #[ORM\Column(type: 'float')]
     private float $longitude;
+
+    #[ORM\Column(type: 'string', length: 255)]
+    private string $description;
 
     public function __construct(
         string $title,
         string $address,
         float $latitude,
         float $longitude,
+        string $description,
     ) {
         $this->title = $title;
         $this->address = $address;
         $this->latitude = $latitude;
         $this->longitude = $longitude;
+        $this->description = $description;
     }
 
     public function getTitle(): string
@@ -74,5 +82,10 @@ class Shop
     public function setLongitude(float $longitude): void
     {
         $this->longitude = $longitude;
+    }
+
+    public function getDescription(): string
+    {
+        return $this->description;
     }
 }

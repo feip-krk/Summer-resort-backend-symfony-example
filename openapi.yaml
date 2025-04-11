@@ -1,0 +1,97 @@
+openapi: 3.0.0
+info:
+  title: 'My App'
+  description: 'This is an awesome app!'
+  version: 1.0.0
+paths:
+  '/api/{cityId}/home':
+    get:
+      tags:
+        - Home
+      summary: 'Получает данные для домашней страницы'
+      operationId: get_home
+      parameters:
+        -
+          name: title
+          in: query
+          description: 'Title of the home page'
+          required: false
+          schema:
+            type: string
+            example: 'Home Page of summer camp'
+        -
+          name: cityId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              properties:
+                title:
+                  type: string
+                  example: 'Home Page of summer camp'
+                bannerUrl:
+                  type: string
+                  example: 'https://some.site/banner.jpg'
+              type: object
+      responses:
+        '200':
+          description: 'Данные домашней страницы'
+          content:
+            application/json:
+              schema:
+                properties:
+                  title: { type: string, example: 'Home Page of summer camp' }
+                  bannerUrl: { type: string, example: 'https://some.site/banner.jpg' }
+                  contacts: { type: array, items: { $ref: '#/components/schemas/Contact' } }
+                  shops: { type: array, items: { $ref: '#/components/schemas/Shop' } }
+                type: object
+  /api/csv/home:
+    get:
+      operationId: get_home_csv
+      responses:
+        default:
+          description: ''
+components:
+  schemas:
+    Contact:
+      required:
+        - title
+        - url
+      properties:
+        title:
+          type: string
+          example: cbeams
+        url:
+          type: string
+          format: 'https://chris.beams.io/posts/git-commit/'
+      type: object
+    Shop:
+      required:
+        - title
+        - address
+        - latitude
+        - longitude
+        - description
+      properties:
+        title:
+          type: string
+        address:
+          type: int
+        latitude:
+          type: number
+          format: float
+        longitude:
+          type: number
+          format: float
+        description:
+          type: string
+      type: object
+tags:
+  -
+    name: Home
+
