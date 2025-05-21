@@ -18,6 +18,16 @@ class Address
     #[ORM\Column(type: 'string', length: 255)]
     private string $street;
 
+    public function __construct(string $street)
+    {
+        $this->street = $street;
+    }
+
+    public function __toString(): string
+    {
+        return "Address: {$this->street} (ID: {$this->id})";
+    }
+
     public function getStreet(): string
     {
         return $this->street;
@@ -26,5 +36,10 @@ class Address
     public function setStreet(string $street): void
     {
         $this->street = $street;
+    }
+
+    public function getId(): int
+    {
+        return $this->id;
     }
 }

@@ -36,3 +36,28 @@ services:
             $baseUrl: '%app.base_url%'
             $resourceDir: '%kernel.project_dir%/resource/storage'
 
+    admin.shop:
+        class: App\Admin\ShopAdmin
+        arguments: [~, App\Entity\Shop, ~]
+        tags:
+            - { name: sonata.admin, model_class: App\Entity\Shop, manager_type: orm, label: Магазины, group: Shops }
+    admin.address:
+        class: App\Admin\AddressAdmin
+        arguments: [ ~, App\Entity\Address, ~ ]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Адреса, group: Shops }
+    admin.contact:
+        class: App\Admin\ContactAdmin
+        arguments: [~, App\Entity\Contact, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Контакты, group: Contacts }
+    admin.user:
+        class: App\Admin\UserAdmin
+        arguments: [~, App\Entity\User, ~]
+        tags:
+            - { name: sonata.admin, model_class: App\Entity\User, manager_type: orm, label: Пользователи, group: Users }
+    admin.user_profile:
+        class: App\Admin\UserProfileAdmin
+        arguments: [~, App\Entity\UserProfile, ~]
+        tags:
+            - { name: sonata.admin, model_class: App\Entity\UserProfile, manager_type: orm, label: Профили пользователей, show_in_dashboard: false, parent: App\Entity\User }

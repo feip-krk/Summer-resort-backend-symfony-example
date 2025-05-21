@@ -94,7 +94,6 @@ xdebug-disable: ## Disable Xdebug
 load-fixture:
 	$(DEP) php bin/console doctrine:fixtures:load --no-interaction
 
-
 .PHONY: php-cs-fixer
 php-cs-fixer: ## Run PHP Coding Standards Fixer in analyze mode
 	$(DEP) ./docker/php/php-cs-fixer fix --verbose --allow-risky=yes --dry-run
